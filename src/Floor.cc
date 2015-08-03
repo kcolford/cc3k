@@ -1,6 +1,6 @@
 #include "Floor.hh"
 #include "SceneGraph.hh"
-#include "shared_ptr.hh"
+#include "smart_ptr.hh"
 #include "GameObject.hh"
 #include "Game.hh"
 #include "collision_masks.hh"

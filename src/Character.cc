@@ -1,5 +1,5 @@
 #include "Character.hh"
-#include "shared_ptr.hh"
+#include "smart_ptr.hh"
 #include "Game.hh"
 #include "GameObject.hh"
 #include "Gold.hh"

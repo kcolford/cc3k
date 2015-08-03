@@ -1,7 +1,7 @@
 #ifndef SCENEGRAPHPTR_HH
 #define SCENEGRAPHPTR_HH
 
-#include "shared_ptr.hh"
+#include "smart_ptr.hh"
 
 struct SceneGraph;
 typedef shared_ptr<SceneGraph> SceneGraphPtr;
