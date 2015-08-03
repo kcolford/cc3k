@@ -70,7 +70,7 @@ void Potion::apply(Character &p)
 {
   amount_ += amount_ * p.potion_bonus();
   if (effect_ & EFFECT_EXTENDED)
-    game.floor()->modifications.push_back(Potion::Modifier(p, effect_, amount_));
+    floor()->modifications.push_back(Potion::Modifier(p, effect_, amount_));
   else
     adjust(&p, effect_, amount_);
 }

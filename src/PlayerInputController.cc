@@ -61,7 +61,7 @@ void PlayerInputController::update(GameObject &me)
     int tx = me.x() + directions[dir].first;
     int ty = me.y() + directions[dir].second;
     bool hit_something = false;
-    BOOST_FOREACH(GameObjectPtr p, game.floor()->cells[tx][ty]) {
+    BOOST_FOREACH(GameObjectPtr p, floor()->cells[tx][ty]) {
       if (p->controller && p->stats) {
         hit_something = true;
         int dmg = p->get_attacked(*me.stats);
@@ -81,7 +81,7 @@ void PlayerInputController::update(GameObject &me)
     int tx = me.x() + directions[dir].first;
     int ty = me.y() + directions[dir].second;
     bool got_a_potion = false;
-    BOOST_FOREACH(GameObjectPtr p, game.floor()->cells[tx][ty]) {
+    BOOST_FOREACH(GameObjectPtr p, floor()->cells[tx][ty]) {
       if (p->potion_use) {
         got_a_potion = true;
         used_potions.insert(p->name);
@@ -103,7 +103,7 @@ void PlayerInputController::update(GameObject &me)
       for (int i = -1; i < 2; i++) {
         for (int j = -1; j < 2; j++) {
           BOOST_FOREACH(GameObjectPtr p,
-                        game.floor()->cells[me.x() + i][me.y() + j]) {
+                        floor()->cells[me.x() + i][me.y() + j]) {
             if (p->potion_use) {
               if (used_potions.count(p->name))
                 game.stats.action << "The PC sees a vial of " << p->name << ". ";

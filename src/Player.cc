@@ -31,3 +31,8 @@ GameObjectPtr make_player(std::string cls)
   o->name = "themself";
   return o;
 }
+
+GameObjectPtr player()
+{
+  return game.player();
+}

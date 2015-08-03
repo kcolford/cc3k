@@ -5,5 +5,6 @@
 #include <string>
 
 GameObjectPtr make_player(std::string cls);
+GameObjectPtr player();         // game.player()
 
 #endif

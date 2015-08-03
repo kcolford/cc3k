@@ -5,6 +5,7 @@
 #include "Game.hh"
 #include "collision_masks.hh"
 #include "SceneGraph.hh"
+#include "Player.hh"
 #include <sstream>
 #include <boost/foreach.hpp>
 #include <cstring>
@@ -43,8 +44,8 @@ GameObjectPtr Floor::make_cell(char type)
 
 void Floor::init(std::istream &in)
 {
-  assert(game.floor() == shared_from_this());
-  scene->sub(game.player()->scene);
+  assert(floor() == shared_from_this());
+  scene->sub(player()->scene);
   std::string line;
   for (int y = height - 1; y >= 0 && getline(in, line); y--) {
     for (int x = 0; x < width && x < line.size(); x++) {
@@ -75,4 +76,9 @@ unsigned Floor::collision_mask(int x, int y)
   BOOST_FOREACH(GameObjectPtr o, cells[x][y])
     out |= o->collision_mask;
   return out;
+}
+
+FloorPtr floor()
+{
+  return game.floor();
 }

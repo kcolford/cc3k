@@ -4,11 +4,6 @@
 #include <cassert>
 #include <boost/foreach.hpp>
 
-#if DEBUG
-# include "Floor.hh"
-# include "GameObject.hh"
-#endif
-
 View::View()
   : x_offset_(0)
   , y_offset_(0)
@@ -17,20 +12,6 @@ View::View()
 void View::recurse_scene(SceneGraphPtr s)
 {
   assert(s);
-
-#if DEBUG
-  if (s->mesh) {
-    bool flag = false;
-    BOOST_FOREACH(GameObjectPtr g, game.floor()->cells[s->x][s->y])
-      if (g->scene == s)
-        flag = true;
-    assert(flag);
-  }
-
-  assert(cache.count(s) == 0);
-  cache.insert(s);
-
-#endif
 
   if (!s->visible) return;
 

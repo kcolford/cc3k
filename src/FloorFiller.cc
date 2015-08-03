@@ -77,7 +77,7 @@ void FloorFiller::randomFill()
     assert((unsigned) player_ch < max_chambers);
     player_coords = chambers[player_ch].size() * r();
     assert((unsigned) player_coords < chambers[player_ch].size());
-    if (!game.player()->setPos(chambers[player_ch][player_coords]))
+    if (!player()->setPos(chambers[player_ch][player_coords]))
       break;
   }
   

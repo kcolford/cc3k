@@ -6,6 +6,6 @@
 
 bool add_to_floor(GameObjectPtr o, int x, int y)
 {
-  game.floor()->scene->sub(o->scene);
+  floor()->scene->sub(o->scene);
   return o->setPos(x, y);
 }

@@ -8,6 +8,7 @@
 #include "Character.hh"
 #include "collision_masks.hh"
 #include "Gold.hh"
+#include "Player.hh"
 #include <boost/foreach.hpp>
 
 GameObject::GameObject()
@@ -35,14 +36,14 @@ void GameObject::use_potion(Character &target)
 
 bool GameObject::setPos(int x, int y)
 {
-  BOOST_FOREACH(GameObjectPtr o, game.floor()->cells[x][y])
+  BOOST_FOREACH(GameObjectPtr o, floor()->cells[x][y])
     if (collision_mask & o->collision_mask)
       return true;
 
   GameObjectPtr myself = shared_from_this();
-  game.floor()->cells[x_][y_].erase(myself);
+  floor()->cells[x_][y_].erase(myself);
 
-  BOOST_FOREACH(GameObjectPtr o, game.floor()->cells[x][y]) {
+  BOOST_FOREACH(GameObjectPtr o, floor()->cells[x][y]) {
     if (o->collect && stats) {
       o->collect->collectMe(*o, *stats);
     }
@@ -50,7 +51,7 @@ bool GameObject::setPos(int x, int y)
 
   x_ = x;
   y_ = y;
-  game.floor()->cells[x_][y_].insert(myself);
+  floor()->cells[x_][y_].insert(myself);
   if (scene)
     scene->update(x_, y_);
 
@@ -68,7 +69,7 @@ static GameObjectPtr make_object_from_encoding(char type)
 {
   switch (type) {
   case '\\': return make_stairs();
-  case '@': return game.player();
+  case '@': return player();
   case '0': return make_potion(EFFECT_HEALTH, 10);
   case '1': return make_potion(EFFECT_BUFF_ATK, 5);
   case '2': return make_potion(EFFECT_BUFF_DEF, 5);
@@ -88,7 +89,7 @@ GameObjectPtr make_object(char type)
 {
   GameObjectPtr out = make_object_from_encoding(type);
   if (out->scene)
-    game.floor()->scene->sub(out->scene);
+    floor()->scene->sub(out->scene);
   return out;
 }
 

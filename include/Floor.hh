@@ -41,5 +41,6 @@ typedef shared_ptr<Floor> FloorPtr;
 
 FloorPtr make_floor();
 GameObjectPtr make_stairs();
+FloorPtr floor();               // game.floor()
 
 #endif

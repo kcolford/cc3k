@@ -1,11 +1,12 @@
 #include "PlayerStats.hh"
 #include "Game.hh"
 #include "GameObject.hh"
+#include "Player.hh"
 #include "Character.hh"
 
 int PlayerStats::gold()
 {
-  return game.player()->stats->gold();
+  return player()->stats->gold();
 }
 
 int PlayerStats::floor()
@@ -15,15 +16,15 @@ int PlayerStats::floor()
 
 int PlayerStats::health()
 {
-  return game.player()->stats->health();
+  return player()->stats->health();
 }
 
 int PlayerStats::def()
 {
-  return game.player()->stats->def();
+  return player()->stats->def();
 }
 
 int PlayerStats::atk()
 {
-  return game.player()->stats->atk();
+  return player()->stats->atk();
 }

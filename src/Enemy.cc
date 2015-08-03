@@ -7,6 +7,7 @@
 #include "collision_masks.hh"
 #include "DragonAI.hh"
 #include "main.hh"
+#include "Player.hh"
 #include <cstdlib>
 #include <cctype>
 
@@ -27,8 +28,8 @@ struct EnemyAI: Controller {
   bool is_hostile;
   EnemyAI(bool hos = true): is_hostile(hos) {}
   void update(GameObject &me) {
-    if (is_hostile && within_one_block(me, *game.player())) {
-      int dmg = game.player()->get_attacked(*me.stats);
+    if (is_hostile && within_one_block(me, *player())) {
+      int dmg = player()->get_attacked(*me.stats);
       game.stats.action << me.name << " deals " << dmg << " damage to PC. ";
     } else {
       int xoff, yoff;
@@ -88,9 +89,9 @@ DragonAI::~DragonAI()
 
 void DragonAI::update(GameObject &me)
 {
-  if (within_one_block(*game.player(), me) ||
-      within_one_block(*game.player(), *guarding)) {
-    int dmg = game.player()->get_attacked(*me.stats);
+  if (within_one_block(*player(), me) ||
+      within_one_block(*player(), *guarding)) {
+    int dmg = player()->get_attacked(*me.stats);
     game.stats.action << "The Dragon defends its hoard, dealing " << dmg << " damage. ";
   }
 }
