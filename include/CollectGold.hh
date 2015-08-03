@@ -3,12 +3,10 @@
 
 #include "CollectComponent.hh"
 
-class GameObject;
-
 struct CollectGold: CollectComponent {
   int mygold;
   CollectGold(int g);
-  void collectMe(GameObject &me, GameObject &collector);
+  void collectMe(GameObject &me, Character &collector);
 };
 
 

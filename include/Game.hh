@@ -13,6 +13,8 @@
 #include <list>
 #include <sstream>
 
+#include "random.hh"            // present for backwards compatibility
+
 class View;
 
 class Game
@@ -79,9 +81,5 @@ public:
 };
 
 extern Game game;
-
-// Return a random number in the range [0, 1)
-double r();
-
 
 #endif

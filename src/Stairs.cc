@@ -6,8 +6,7 @@
 #include "collision_masks.hh"
 
 struct WinGame: CollectComponent {
-  void collectMe(GameObject &me __attribute__((__unused__)),
-                 GameObject &collector __attribute__((__unused__))) {
+  void collectMe(GameObject &me, Character &collector) {
     game.beatlevel();
   }
 };

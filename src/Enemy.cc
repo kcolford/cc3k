@@ -22,7 +22,7 @@ bool within_one_block(const GameObject &l, const GameObject &r)
 static const int max_iteration = 8;
 
 struct EnemyAI: Controller {
-  void get_attacked(const Character &attacker __attribute__((__unused__)))
+  void get_attacked(const Character &attacker)
   { is_hostile = true; }
   bool is_hostile;
   EnemyAI(bool hos = true): is_hostile(hos) {}
@@ -104,4 +104,3 @@ GameObjectPtr make_dragon(GameObjectPtr guarding)
   d.guarding = guarding;
   return out;
 }
-

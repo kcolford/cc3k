@@ -5,18 +5,17 @@
 #include "CollectComponent.hh"
 #include "Game.hh"
 #include "Character.hh"
+#include "GameObject.hh"
 
 CollectGold::CollectGold(int g)
   : mygold(g)
 {}
 
-void CollectGold::collectMe(GameObject &me, GameObject &collector)
+void CollectGold::collectMe(GameObject &me, Character &collector)
 {
-  if (collector.stats) {
-    mygold += mygold * collector.stats->score_bonus();
-    collector.stats->gold(collector.stats->gold() + mygold);
-    game.stats.action << "The PC picks up " << mygold << " gold. ";
-  }
+  mygold += mygold * collector.score_bonus();
+  collector.gold(collector.gold() + mygold);
+  game.stats.action << "The PC picks up " << mygold << " gold. ";
   me.kill();
 }
 

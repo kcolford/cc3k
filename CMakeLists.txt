@@ -5,6 +5,7 @@ find_package(Boost REQUIRED COMPONENTS program_options)
 find_package(Curses)
 
 add_executable(cc3k
+  src/add_to_floor.cc
   src/cc3k.cc
   src/Character.cc
   src/Enemy.cc
@@ -19,6 +20,7 @@ add_executable(cc3k
   src/Player.cc
   src/PlayerStats.cc
   src/Potion.cc
+  src/random.cc
   src/SceneGraph.cc
   src/Stairs.cc
   src/TextView.cc

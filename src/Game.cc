@@ -6,24 +6,10 @@
 #include "Player.hh"
 #include "View.hh"
 #include "make_view.hh"
-#include <cstdlib>
 #include <queue>
 #include <sstream>
 #include <exception>
 #include <boost/foreach.hpp>
-#include <ctime>
-
-double r()
-{
-  double r;
-  do
-    r = rand();
-  while (r == RAND_MAX);
-    
-  double out = (double) r / (double) RAND_MAX;
-  assert(out < 1.0);
-  return out;
-}
 
 static const char *default_floorplan = "\
 |-----------------------------------------------------------------------------|\n\

@@ -1,16 +1,17 @@
 #include "Character.hh"
-#include "smart_ptr.hh"
-#include "Game.hh"
 #include "GameObject.hh"
 #include "Gold.hh"
 #include "collision_masks.hh"
 #include "CollectComponent.hh"
+#include "add_to_floor.hh"
+#include "random.hh"
+#include <algorithm>
 #include <cstring>
 #include <limits>
 
 Character::Character()
 {
-  memset(this, 0, sizeof *this);
+  std::memset(this, 0, sizeof *this);
 }
 
 static
@@ -66,26 +67,17 @@ int Character::get_attacked(Character &attacker)
     total_damage += dmg;
   }
   health(health() - total_damage);
-  if (health() <= 0)
+  if (health() <= 0) {
     attacker.gold(attacker.gold() + attacker.looting());
-#if 1
-  if (max_hp() == 180) {
-    game.stats.action << "The orc recieved " << total_damage << " damage. ";
+    GameObjectPtr p = make_object('6' + 2 * r());
+    p->collect->collectMe(*p, attacker);
   }
-#endif
   return total_damage;
 }
 
 void Character::died(GameObject &me)
 {
   me.collision_mask = COLL_NOTHING;
-  if (gold() == 0) {
-    GameObjectPtr p = make_object('6' + 2 * r());
-    p->collect->collectMe(*p, *game.player());
-  } else {
-    GameObjectPtr o = make_gold((gold_type) gold());
-    game.floor()->scene->sub(o->scene);
-    o->setPos(me.x(), me.y());
-  }
+  if (gold())
+    add_to_floor(make_gold((gold_type) gold()), me.x(), me.y());
 }
-

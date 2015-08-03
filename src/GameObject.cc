@@ -43,8 +43,8 @@ bool GameObject::setPos(int x, int y)
   game.floor()->cells[x_][y_].erase(myself);
 
   BOOST_FOREACH(GameObjectPtr o, game.floor()->cells[x][y]) {
-    if (o->collect) {
-      o->collect->collectMe(*o, *this);
+    if (o->collect && stats) {
+      o->collect->collectMe(*o, *stats);
     }
   }
 

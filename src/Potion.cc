@@ -5,6 +5,7 @@
 #include "collision_masks.hh"
 #include "CollectComponent.hh"
 #include "main.hh"
+#include "GameObject.hh"
 
 Potion::Potion(effect_type effect, int amount)
   : effect_(effect)
@@ -75,9 +76,8 @@ void Potion::apply(Character &p)
 }
 
 struct PotionCollection: CollectComponent {
-  void collectMe(GameObject &me, GameObject &collector) {
-    if (collector.stats)
-      me.use_potion(*collector.stats);
+  void collectMe(GameObject &me, Character &collector) {
+    me.use_potion(collector);
   }
 };
 
