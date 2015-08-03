@@ -1,4 +1,4 @@
-#include <config.h>
+#include <config.hh>
 #include "make_view.hh"
 #include "main.hh"
 #include "View.hh"
@@ -11,13 +11,11 @@
 
 shared_ptr<View> make_view()
 {
-  if (false)
-    return make_shared<TextView>();
-#if CURSES_FOUND
-  else if (config["use_curses"])
-    return make_shared<CursesView>();
-#endif
-  else if (true)
-    return make_shared<TextView>();
+  if (false);
 
+#if CURSES_FOUND
+  else if (config["use_curses"]) return make_shared<CursesView>();
+#endif
+  
+  return make_shared<TextView>();
 }

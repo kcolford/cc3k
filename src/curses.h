@@ -1,7 +1,7 @@
 #ifndef CC3K_CURSES_H
 #define CC3K_CURSES_H
 
-#include <config.h>
+#include <config.hh>
 
 #if CURSES_FOUND
 # if CURSES_HAVE_CURSES_H

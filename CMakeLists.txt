@@ -42,4 +42,4 @@ target_link_libraries(cc3k
   ${CURSES_LIBRARIES}
   )
 
-configure_file(config.in.h config.h)
+configure_file(config.in.hh config.hh)

@@ -1,4 +1,4 @@
-#include <config.h>
+#include <config.hh>
 #include "CursesView.hh"
 #include "curses.h"
 #include <climits>
@@ -27,7 +27,7 @@ CursesView::CursesView()
 {
   std::setlocale(LC_ALL, "");
   initscr(); cbreak(); noecho();
-#if 0
+#ifdef ENABLE_CURSES_ARROW_KEYS
   keypad(stdscr, TRUE);
 #endif
 }
