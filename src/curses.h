@@ -8,6 +8,10 @@
 #  include <curses.h>
 # elif CURSES_HAVE_NCURSES_H
 #  include <ncurses.h>
+# elif CURSES_HAVE_CURSES_CURSES_H
+#  include <curses/curses.h>
+# elif CURSES_HAVE_NCURSES_NCURSES_H
+#  include <ncurses/ncurses.h>
 # else
 #  error "Curses was found but no valid header was identified for it."
 # endif
