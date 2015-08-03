@@ -2,7 +2,8 @@
 #define COLLECTGOLD_HH
 
 #include "CollectComponent.hh"
-#include "GameObject.hh"
+
+class GameObject;
 
 struct CollectGold: CollectComponent {
   int mygold;

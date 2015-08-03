@@ -5,7 +5,7 @@
 //        included everywhere, compilation time could be reduced with
 //        PreCompiled headers or setting up forward declarations only
 //        here.
-#include "shared_ptr.hh"
+#include "smart_ptr.hh"
 #include "GameObjectPtr.hh"
 #include "SceneGraph.hh"
 #include "Floor.hh"

@@ -1,7 +1,7 @@
 #ifndef GOLD_HH
 #define GOLD_HH
 
-#include "GameObject.hh"
+#include "GameObjectPtr.hh"
 
 enum gold_type {
   PILE_SMALL = 1,

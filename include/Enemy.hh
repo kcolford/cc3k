@@ -1,7 +1,7 @@
 #ifndef ENEMY_HH
 #define ENEMY_HH
 
-#include "GameObject.hh"
+#include "GameObjectPtr.hh"
 #include <string>
 
 GameObjectPtr make_enemy(char type);

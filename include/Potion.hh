@@ -1,7 +1,7 @@
 #ifndef POTION_HH
 #define POTION_HH
 
-#include "GameObject.hh"
+#include "GameObjectPtr.hh"
 
 class Character;
 

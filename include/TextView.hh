@@ -2,7 +2,7 @@
 #define TEXTVIEW_HH
 
 #include "View.hh"
-#include "shared_ptr.hh"
+#include "smart_ptr.hh"
 #include <string>
 #include <sstream>
 

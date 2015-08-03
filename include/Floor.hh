@@ -1,9 +1,9 @@
 #ifndef FLOOR_HH
 #define FLOOR_HH
 
-#include "shared_ptr.hh"
+#include "smart_ptr.hh"
 #include "SceneGraph.hh"
-#include "GameObject.hh"
+#include "GameObjectPtr.hh"
 #include "Potion.hh"
 #include <istream>
 #include <list>

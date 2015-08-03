@@ -1,7 +1,7 @@
 #ifndef PLAYER_HH
 #define PLAYER_HH
 
-#include "GameObject.hh"
+#include "GameObjectPtr.hh"
 #include <string>
 
 GameObjectPtr make_player(std::string cls);

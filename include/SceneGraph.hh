@@ -1,12 +1,10 @@
 #ifndef SCENEGRAPH_HH
 #define SCENEGRAPH_HH
 
-#include "shared_ptr.hh"
+#include "SceneGraphPtr.hh"
+#include "smart_ptr.hh"
 #include <list>
 #include <vector>
-
-struct SceneGraph;
-typedef shared_ptr<SceneGraph> SceneGraphPtr;
 
 struct SceneGraph 
   : enable_shared_from_this<SceneGraph>
@@ -40,13 +38,5 @@ private:
   SceneGraph &operator=(SceneGraph other);
 
 };
-
-SceneGraphPtr make_scene_graph(char m, int x, int y);
-
-inline
-SceneGraphPtr make_scene_graph(char m)
-{
-  return make_scene_graph(m, 0, 0);
-}
 
 #endif

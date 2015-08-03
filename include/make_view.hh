@@ -1,7 +1,7 @@
 #ifndef MAKE_VIEW_HH
 #define MAKE_VIEW_HH
 
-#include "shared_ptr.hh"
+#include "smart_ptr.hh"
 
 class View;
 

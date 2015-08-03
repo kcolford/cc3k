@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_HH
 #define GAMEOBJECT_HH
 
-#include "shared_ptr.hh"
+#include "smart_ptr.hh"
 #include "GameObjectPtr.hh"
 #include <utility>
 

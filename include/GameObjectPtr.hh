@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECTPTR_HH
 #define GAMEOBJECTPTR_HH
 
-#include "shared_ptr.hh"
+#include "smart_ptr.hh"
 
 class GameObject;
 typedef boost::shared_ptr<GameObject> GameObjectPtr;

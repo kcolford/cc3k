@@ -2,7 +2,9 @@
 #define DRAGONAI_HH
 
 #include "Controller.hh"
-#include "GameObject.hh"
+#include "GameObjectPtr.hh"
+
+class GameObject;
 
 struct DragonAI: Controller {
   GameObjectPtr guarding;
@@ -16,6 +18,5 @@ private:
   DragonAI &operator=(DragonAI other);
 
 };
-
 
 #endif
