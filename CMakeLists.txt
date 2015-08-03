@@ -52,6 +52,7 @@ target_sources(cc3k PUBLIC
   $<$<BOOL:CURSES_FOUND>:src/CursesView.cc src/CursesView.hh>
   )  
 target_include_directories(cc3k PUBLIC
+  ${CMAKE_CURRENT_BINARY_DIR}
   ${Boost_INCLUDE_DIRS}
   ${CURSES_INCLUDE_DIRS}
   )

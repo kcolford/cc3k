@@ -1,5 +1,6 @@
+#include <config.h>
 #include "CursesView.hh"
-#include <ncurses.h>
+#include "curses.h"
 #include <climits>
 #include <cstring>
 #include <string>
