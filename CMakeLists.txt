@@ -18,6 +18,7 @@ add_executable(cc3k
   src/main.cc
   src/make_view.cc
   src/Player.cc
+  src/PlayerInputController.cc
   src/PlayerStats.cc
   src/Potion.cc
   src/random.cc
