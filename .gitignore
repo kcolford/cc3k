@@ -1,0 +1,7 @@
+# Ignore the build directories
+/build/
+/bin/
+
+# Configuration based directories.
+/Release/
+/Debug/
