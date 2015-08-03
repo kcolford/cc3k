@@ -1,6 +1,5 @@
 #include "Potion.hh"
 #include "Character.hh"
-#include "Game.hh"
 #include "Floor.hh"
 #include "collision_masks.hh"
 #include "CollectComponent.hh"

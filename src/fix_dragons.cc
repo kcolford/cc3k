@@ -1,5 +1,5 @@
 #include "fix_dragons.hh"
-#include "Game.hh"
+#include "Floor.hh"
 #include "Gold.hh"
 #include "Enemy.hh"
 #include "GameObject.hh"

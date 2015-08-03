@@ -1,6 +1,5 @@
 #include "add_to_floor.hh"
 #include "Floor.hh"
-#include "Game.hh"
 #include "SceneGraph.hh"
 #include "GameObject.hh"
 

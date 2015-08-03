@@ -1,29 +1,15 @@
-#include "Game.hh"
+#include "FloorFiller.hh"
 #include "Floor.hh"
 #include "Player.hh"
 #include "collision_masks.hh"
 #include "GameObject.hh"
+#include "random.hh"
 #include <utility>
 #include <cassert>
 #include <cstring>
+#include <vector>
 
 using namespace std;
-
-static const int max_chambers = 5;
-
-struct FloorFiller
-{
-  FloorPtr floor;
-  vector<pair<int, int> > chambers[max_chambers];
-  int chamber_count;
-  vector<pair<int, int> > *cells[Floor::width][Floor::height];
-
-  FloorFiller(FloorPtr f);
-  bool is_open(int x, int y);
-  void run(int x, int y, std::vector<std::pair<int, int> > *chamber = NULL);
-  void randomFill();
-
-};
 
 FloorFiller::FloorFiller(FloorPtr f)
   : floor(f)
@@ -133,8 +119,3 @@ void FloorFiller::randomFill()
   
 }
 
-void Game::fillFloor()
-{
-  if (!floor()->is_filled)
-    FloorFiller(floor()).randomFill();
-}

@@ -1,5 +1,4 @@
 #include "SceneGraph.hh"
-#include "Game.hh"
 #include <boost/foreach.hpp>
 
 SceneGraph::SceneGraph()

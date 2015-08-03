@@ -6,6 +6,7 @@
 #include "Player.hh"
 #include "View.hh"
 #include "make_view.hh"
+#include "FloorFiller.hh"
 #include <queue>
 #include <sstream>
 #include <exception>
@@ -178,3 +179,8 @@ void Game::run()
 
 }
 
+void Game::fillFloor()
+{
+  if (!floor()->is_filled)
+    FloorFiller(floor()).randomFill();
+}
