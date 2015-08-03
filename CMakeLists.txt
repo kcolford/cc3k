@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(CC3K)
 
+# Enable Cotire
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cotire/CMake")
+include(cotire)
+
 # Here we guarantee that Boost is in place along with
 # Boost.ProgramOptions
 set(LOCAL_BOOST "${CMAKE_SOURCE_DIR}/boost/boost/../")
@@ -45,6 +49,8 @@ add_executable(cc3k
   src/TextView.cc
   src/View.cc
   )
+
+cotire(cc3k)
 
 target_sources(cc3k PUBLIC
   $<$<BOOL:CURSES_FOUND>:src/CursesView.cc>

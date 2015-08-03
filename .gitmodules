@@ -1,3 +1,6 @@
 [submodule "boost"]
 	path = boost
 	url = https://github.com/mirror/boost.git
+[submodule "cotire"]
+	path = cotire
+	url = https://github.com/kcolford/cotire.git
