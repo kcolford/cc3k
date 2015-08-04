@@ -1,12 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(CC3K)
 
-# Make sure our submodules are up to date.
-execute_process(
-  COMMAND git submodule update --init --depth=1
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-  )
-
 # Enable Cotire
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cotire/CMake")
 include(cotire)
