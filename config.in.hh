@@ -16,7 +16,4 @@
 // Do we have <ncurses/ncurses.h>
 #cmakedefine01 CURSES_HAVE_NCURSES_NCURSES_H
 
-// Should the advanced mode be enabled by default?
-#cmakedefine ENABLE_DEFAULT_ADVANCED_MODE
-
 #endif

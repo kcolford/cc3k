@@ -1,6 +1,5 @@
 // The cc3k game.
 
-#include <config.hh>
 #include "main.hh"
 #include "Game.hh"
 #include <string>
@@ -14,31 +13,19 @@
 
 namespace po = boost::program_options;
 
-std::map<std::string, property_type> config;
+std::map<std::string, int> config;
 
 int run_game(int argc, char *argv[])
 {
-
-#ifdef ENABLE_DEFAULT_ADVANCED_GAME
-  config["advanced_game"] = config["use_curses"] = true;
-#endif
-  
   po::options_description desc("Allowed options");
   desc.add_options()
     ("help", "print this help message")
     ("load-file", po::value<std::string>(),
      "load floors from this file")
-    ("seed", po::value<int>()->notifier(config["random_seed"].get<int>()),
+    ("seed", po::value<int>(&config["random_seed"])->implicit_value(0)->default_value(time(NULL)),
      "initalize with a random seed")
-#if CURSES_FOUND
-    ("curses",
-     po::bool_switch()->notifier(config["use_curses"].get<bool>()),
+    ("curses",po::bool_switch((bool *) &config["use_curses"]),
      "use curses display")
-    ("no-curses",
-     po::bool_switch()->notifier(config["use_curses"].get<bool>())
-     ->implicit_value(false),
-     "do not use the curses display")
-#endif
     ;
   po::positional_options_description p;
   p.add("load-file", 1);
