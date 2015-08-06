@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(CC3K)
 
+# Enable the advanced game.
+set(ENABLE_DEFAULT_ADVANCED_GAME ON)
+
 # Here we guarantee that Boost is in place along with
 # Boost.ProgramOptions
 set(LOCAL_BOOST "${CMAKE_SOURCE_DIR}/boost/boost/../")

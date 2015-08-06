@@ -9,6 +9,7 @@ class PlayerInputController
   : public Controller
 {
   std::set<std::string> used_potions;
+  friend void player_used_potion(std::string name);
   void update(GameObject &me);
 public:
   ~PlayerInputController();

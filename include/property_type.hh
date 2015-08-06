@@ -8,6 +8,9 @@ class property_type {
 private:
   std::string val_;
 
+  std::string val() const
+  { return val_.empty() ? "0" : val_; }
+
 public:
   property_type() {}
 
@@ -15,9 +18,9 @@ public:
   property_type(T other)
   { val_ = boost::lexical_cast<std::string>(other); }
 
-  operator bool() { return val_.empty() || boost::lexical_cast<bool>(val_); }
-  operator int() { return val_.empty() ? 0 : boost::lexical_cast<int>(val_); }
-  operator unsigned() { return val_.empty() ? 0 : boost::lexical_cast<unsigned>(val_); }
+  operator bool() { return boost::lexical_cast<bool>(val()); }
+  operator int() { return boost::lexical_cast<int>(val()); }
+  operator unsigned() { return boost::lexical_cast<unsigned>(val()); }
 
   template<typename T>
   class updater

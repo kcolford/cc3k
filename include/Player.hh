@@ -6,5 +6,6 @@
 
 GameObjectPtr make_player(std::string cls);
 GameObjectPtr player();         // game.player()
+void player_used_potion(std::string name);
 
 #endif

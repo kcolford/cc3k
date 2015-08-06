@@ -28,7 +28,9 @@ void GameObject::update()
 void GameObject::use_potion(Character &target)
 {
   if (potion_use) {
-    game.stats.action << "PC uses " << name << ". ";
+    if (&target == player()->stats.get()) {
+      player_used_potion(name);
+    }
     potion_use->apply(target);
     kill();
   }

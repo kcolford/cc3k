@@ -3,15 +3,14 @@
 #include "Game.hh"
 #include "GameObject.hh"
 #include "View.hh"
+#include "Player.hh"
 #include "within_one_block.hh"
 #include <iostream>
+#include <map>
 #include <utility>
 #include <boost/foreach.hpp>
-#include <boost/container/flat_map.hpp>
 
-template<typename K, typename V>
-struct map: boost::container::flat_map<K, V>
-{};
+using std::map;
 
 static map<std::string, std::pair<int, int> > make_dir_map()
 {
@@ -123,5 +122,17 @@ void PlayerInputController::update(GameObject &me)
 
 PlayerInputController::~PlayerInputController() {
   game.game_over();
+}
+
+static
+PlayerInputController &player_input_controller()
+{
+  return dynamic_cast<PlayerInputController &>(*player()->controller);
+}
+
+void player_used_potion(std::string name)
+{
+  game.stats.action << "PC uses " << name << ". ";
+  player_input_controller().used_potions.insert(name);
 }
 

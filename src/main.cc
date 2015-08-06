@@ -14,30 +14,19 @@
 
 namespace po = boost::program_options;
 
-std::map<std::string, property_type> config;
-
-int run_game(int argc, char *argv[])
+void parse_opts(int argc, char *argv[])
 {
-
-#ifdef ENABLE_DEFAULT_ADVANCED_GAME
-  config["advanced_game"] = config["use_curses"] = true;
-#endif
-  
   po::options_description desc("Allowed options");
   desc.add_options()
     ("help", "print this help message")
-    ("load-file", po::value<std::string>(),
-     "load floors from this file")
-    ("seed", po::value<int>()->notifier(config["random_seed"].get<int>()),
-     "initalize with a random seed")
+    ("load-file", po::value<std::string>(), "load floors from this file")
+    ("seed", po::value<int>(), "initalize with a random seed")
 #if CURSES_FOUND
-    ("curses",
-     po::bool_switch()->notifier(config["use_curses"].get<bool>()),
-     "use curses display")
-    ("no-curses",
-     po::bool_switch()->notifier(config["use_curses"].get<bool>())
-     ->implicit_value(false),
-     "do not use the curses display")
+# ifndef ENABLE_DEFAULT_ADVANCED_GAME
+    ("with-curses", "use curses display")
+# else
+    ("without-curses", "don't use curses display")
+# endif
 #endif
     ;
   po::positional_options_description p;
@@ -50,16 +39,42 @@ int run_game(int argc, char *argv[])
 
   if (vm.count("help")) {
     std::cout << desc << std::endl;
-    return 0;
+    exit(0);
   }
 
+#define _ARG(ID, TGT, DATA)                                             \
+  do { if (vm.count(ID)) config[ID] = config[TGT] = DATA; } while (0)
+#define CHECK_ARG(ID, TGT, DATA) _ARG(#ID, #TGT, DATA)
+#define ADD_ARG(ID) _ARG(#ID, #ID, vm[#ID].as<std::string>())
+  ADD_ARG(load-file);
+  ADD_ARG(seed);
+  CHECK_ARG(with-curses, use_curses, true);
+  CHECK_ARG(without-curses, use_curses, false);
+#undef ADD_ARG
+#undef CHECK_ARG
+#undef _ARG
+}  
+
+std::map<std::string, property_type> config;  
+
+int run_game(int argc, char *argv[])
+{
+
+#ifdef ENABLE_DEFAULT_ADVANCED_GAME
+  config["use_curses"] = true;
+#endif
+
+  config["seed"] = time(NULL);
+
+  parse_opts(argc, argv);
+
   std::ifstream file;
-  if (vm.count("load-file")) {
-    file.open(vm["load-file"].as<std::string>().c_str());
+  if (config.count("load-file")) {
+    file.open(config["load-file"].as<std::string>().c_str());
     game.setIn(file);
   }
 
-  srand(config["random_seed"]);
+  srand(config["seed"]);
 
   config["advanced_game"] = config["use_curses"];
 
